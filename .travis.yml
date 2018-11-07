@@ -8,3 +8,12 @@ before_install:
 script:
   - docker run amorino/docker-react npm run test -- --coverage
   
+deploy:
+  provider: elasticbeanstalk
+  region: "us-west-2"
+  app: "docker-react"
+  env: "Docker-env"
+  bucket_name: "docker-test"
+  bucket_path: "docker-react"
+  on:
+    branch: master
